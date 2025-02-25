@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Upload, Camera } from "lucide-react";
 
+import Chatbot from "./chatbot"; // Import chatbot
+
 interface YoutubeResult {
   title: string;
   url: string;
@@ -101,7 +103,7 @@ const ImageUpload: React.FC = () => {
   };
 
   return (
-    <div className="space-y-4 w-full max-w-2xl font-montserrat">
+    <div className="space-y-4 w-full max-w-2xl font-montserrat relative">
       <div className="flex gap-4">
         {/* 📌 Upload Image Button */}
         <button
@@ -141,11 +143,10 @@ const ImageUpload: React.FC = () => {
 
       {/* 📌 Display Image */}
       {image && (
-  <div className="flex justify-center items-center">
-    <img src={image} alt="Captured" className="max-w-full rounded-lg" />
-  </div>
-)}
-
+        <div className="flex justify-center items-center">
+          <img src={image} alt="Captured" className="max-w-full rounded-lg" />
+        </div>
+      )}
 
       {/* 📌 Hidden Video & Canvas */}
       <video ref={videoRef} className={stream ? "w-64 h-48 border rounded-lg shadow-md" : "hidden"} autoPlay></video>
@@ -183,6 +184,9 @@ const ImageUpload: React.FC = () => {
           Attempt Quiz
         </Button>
       )}
+
+      {/* 📌 Chatbot Popup */}
+      <Chatbot />
     </div>
   );
 };

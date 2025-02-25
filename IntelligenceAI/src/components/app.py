@@ -1,7 +1,10 @@
 import json
+import requests
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from transformers import ViTImageProcessor, ViTForImageClassification
+from transformers import pipeline
+
 from PIL import Image
 import torch
 import yt_dlp
@@ -205,6 +208,37 @@ def gemini():
         "object": object_name,
         "mcqs": mcqs
     })
+# ---------- Chatbot Endpoint (GPT-Neo) ----------
+@app.route("/chat", methods=["POST"])
+def chat():
+    data = request.get_json()
+    if not data or "question" not in data:
+        return jsonify({"error": "Missing 'question' in JSON payload"}), 400
+
+    question = data["question"]
+    prompt = (
+        f"Answer the following question concisely and informatively:\n"
+        f"Question: {question}\nAnswer:"
+    )
+
+    try:
+        llm = pipeline("text-generation", model="EleutherAI/gpt-neo-125M")
+    except Exception as e:
+        return jsonify({"error": f"Error loading LLM: {str(e)}"}), 500
+
+    try:
+        results = llm(prompt, max_length=200, num_return_sequences=1)
+        generated_text = results[0]["generated_text"]
+        answer = generated_text.split("Answer:")[-1].strip()
+    except Exception as e:
+        return jsonify({"error": f"Error generating answer: {str(e)}"}), 500
+
+    return jsonify({
+        "question": question,
+        "answer": answer
+    })
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
