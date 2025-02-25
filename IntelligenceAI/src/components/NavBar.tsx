@@ -4,7 +4,7 @@ import { LogIn, UserPlus, Info } from "lucide-react";
 
 const NavBar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#E0BBE4] bg-opacity-80 backdrop-blur-md border-b border-gray-700 text-white ">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#E0BBE4] bg-opacity-80 backdrop-blur-md border-b border-gray-700 text-black ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
         <div className="flex justify-between items-center h-16">
@@ -20,13 +20,13 @@ const NavBar = () => {
 
           <div className="flex items-center gap-4">
             <Link to="/about">
-              <Button variant="ghost" className="flex items-center gap-2 text-gray-300 hover:text-white">
+              <Button variant="ghost" className="flex items-center gap-2 text-black-300 hover:text-gray">
                 <Info className="w-4 h-4" />
                 Details
               </Button>
             </Link>
             <Link to="/sign-in">
-              <Button variant="ghost" className="flex items-center gap-2 text-gray-300 hover:text-white">
+              <Button variant="ghost" className="flex items-center gap-2 text-black-300 hover:text-white">
                 <LogIn className="w-4 h-4" />
                 SignIn
               </Button>

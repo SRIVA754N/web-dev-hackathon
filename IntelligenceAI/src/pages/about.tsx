@@ -23,6 +23,14 @@ const About = () => {
             <p className = "mt-4">
             Our goal is to make learning accessible and engaging for everyone. We're constantly working to improve and expand our offerings, so stay tuned for more updates!
           </p>
+          <br></br>
+          <p className="text-lg mb-4"> By </p>
+          <p className="text-lg mb-4"> Sukesh S</p>
+          <p className="text-lg mb-4"> Sanjay Madhukar </p>
+          <p className="text-lg mb-4"> Srivatsan S</p>
+          <p className="text-lg mb-4"> Harikishore C</p>
+
+
   
         </div>
       </div>
