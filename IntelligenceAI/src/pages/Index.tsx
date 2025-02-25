@@ -5,6 +5,7 @@ import Sidebar from "@/components/Sidebar";
 import FAQ from "@/components/FAQ";
 import ImageUpload from "@/components/ImageUpload";
 import { Button } from "@/components/ui/button";
+import Footer from "@/components/Footer"; // Import the Footer component
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -51,7 +52,10 @@ const Index = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="flex-grow px-4 py-2 rounded-l-lg bg-[#2f3640] text-white border border-[#2AF598] focus:outline-none"
               />
-              <button type="submit" className="bg-[#2AF598] text-black px-6 py-2 rounded-r-lg hover:bg-[#009EFD] transition">
+              <button
+                type="submit"
+                className="bg-[#2AF598] text-black px-6 py-2 rounded-r-lg hover:bg-[#009EFD] transition"
+              >
                 Search
               </button>
             </form>
@@ -72,6 +76,7 @@ const Index = () => {
           </div>
         </main>
       </div>
+      <Footer /> {/* Added the Footer component here */}
     </div>
   );
 };
